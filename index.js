@@ -29,6 +29,7 @@ function crypto() {
       return res.json();
     })
     .then((data) => {
+      console.log(data)
       // loop through the data and display 3 top coins in a respective crypto-top div, with the name, price, market high, and market low
       for (let i = 0; i < [hover]; i++) {
         const coin = data[i];
@@ -36,10 +37,10 @@ function crypto() {
         coinDiv.classList.add("crypto-container");
         coinDiv.innerHTML = `
                 <div id="coin">
-                  <img id="fix-to-top" src="${coin.image.small}"><h3>${coin.name}</h3></img>
-                  <img src="assets/current_price.png" id="current_price">$${coin.market_data.current_price.cad}</img>
-                  <img src="assets/market_high.png" id="market_high">$${coin.market_data.high_24h.cad}</img>
-                  <img src="assets/market_low.png" id="market_low">$${coin.market_data.low_24h.cad}</img>
+                  <img id="coin_img" src="${coin.image.large}"><h3>${coin.name}</h3></img>
+                  <img src="assets/current_price.png" id="current_price" alt="Current Price">$${coin.market_data.current_price.cad}</img>
+                  <img src="assets/market_high.png" id="market_high" alt="Market High 24Hr">$${coin.market_data.high_24h.cad}</img>
+                  <img src="assets/market_low.png" id="market_low" alt="Market Low 24Hr">$${coin.market_data.low_24h.cad}</img>
                 </div>
             `;
         document.getElementById("crypto").appendChild(coinDiv);
@@ -122,6 +123,20 @@ function expanded_weather() {
   expanded_weather.classList.toggle("hide");
 }
 crypto();
+
+// function advanced_weather() {
+//   fetch("https://api.checkwx.com/metar/CYYJ/?x-api-key=0c8a7995f24e4c699453e3bb8d")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data)
+//     var advanced_weather = document.getElementById("advanced_weather")
+//     advanced_weather.innerHTML = `
+//     <div>METAR Report: ${data.data[0]}</div>
+//     `
+//   })
+//   .catch((err) => console.log(err));
+// };
+// setInterval(advanced_weather, 1000);
 
 // async function expanded_crypto() {
 //   console.log("clicked");
