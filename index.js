@@ -9,7 +9,7 @@ fetch(
     return res.json();
   })
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     document.body.style.backgroundImage = `url(${data.urls.regular})`;
     document.getElementById("author").textContent = `By: ${data.user.name}`;
   })
@@ -29,7 +29,7 @@ function crypto() {
       return res.json();
     })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       // loop through the data and display 3 top coins in a respective crypto-top div, with the name, price, market high, and market low
       for (let i = 0; i < [hover]; i++) {
         const coin = data[i];
@@ -78,20 +78,20 @@ function success(pos) {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       // round the wind speed to 2 decimal places
       var wind = data.wind.speed / 1.94;
-      const windSpeed = Math.round(wind * 100) / 100;
+      const windSpeed = Math.round(wind * 1000) / 1000;
       document.getElementById("weather").innerHTML = `
       <img id="weather_icon" src='http://openweathermap.org/img/w/${data.weather[0].icon}.png'></img>
-      <div id="temp">${data.main.temp}°C</div>
+      <div id="temp">${data.main.temp}</div>
       <div id="weather_container" onClick="expanded_weather()">
       <div>Current Conditions: ${data.weather[0].description}</div>
       </div>
       <div id="expanded_weather" class="hide">
       <div>Feels Like: ${data.main.feels_like}°C</div>
       <div>Humidity: ${data.main.humidity}%</div>
-      <div>Wind Speed: ${windSpeed}Knots</div>
+      <div>Wind Speed: ${windSpeed} Knots</div>
       <div>Wind Direction: ${data.wind.deg}°</div>
       <div>Cloudiness: ${data.clouds.all}%</div>
       <div>Pressure: ${data.main.pressure}hPa</div>
@@ -118,11 +118,40 @@ function error(err) {
 navigator.geolocation.getCurrentPosition(success, error, options);
 6;
 function expanded_weather() {
-  console.log("clicked");
+  // console.log("clicked");
   const expanded_weather = document.getElementById("expanded_weather");
   expanded_weather.classList.toggle("hide");
 }
 crypto();
+
+
+function DisplayIp() {
+  let ip = '';
+  ip += document.getElementById("ip").value;
+  fetch(`https://ipinfo.io/${ip}/json?token=3c072903cd3152`)
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse)
+    let display = document.getElementById("display_ip")
+    display.innerHTML = `
+    <div>IP: ${jsonResponse.ip}</div>
+    <div>City: ${jsonResponse.city}</div>
+    <div>Region: ${jsonResponse.region}</div>
+    <div>Country: ${jsonResponse.country}</div>
+    <div>Location: ${jsonResponse.loc}</div>
+    <div>Timezone: ${jsonResponse.timezone}</div>
+    <div>Postal: ${jsonResponse.postal}</div>
+    <div>Org: ${jsonResponse.org}</div>
+    `
+    console.log(display)
+  })
+  .catch((err) => console.log(err));
+};
+// setInterval(DisplayIp, 1000);
+
+
+
+
 
 // function advanced_weather() {
 //   fetch("https://api.checkwx.com/metar/CYYJ/?x-api-key=0c8a7995f24e4c699453e3bb8d")
@@ -155,7 +184,7 @@ crypto();
 //   console.log(time);
 // }
 
-/* 
+/*
 var time = hours + ":" + minutes + " " + am_pm;
 var am_pm = today.getHours() >= 12 ? "PM" : "AM";
 var hours = today.getHours() - 12;
@@ -163,7 +192,7 @@ var minutes = today.getMinutes();
 if (minutes < 10) {
   minutes = "0" + minutes;
 }
-weather api key 
+weather api key
 */
 
 // create a tests folder and a tests.js file

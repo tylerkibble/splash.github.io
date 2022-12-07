@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
-    />
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <main>
-      <div class="top">
-        <div id="crypto"></div>
-        <div id="advanced_weather"></div>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <main>
+    <div class="top">
+      <div id="crypto"></div>
+      <div id="searches">        
+        <div id="ipInfo">
+          <h1>IP Address Info</h1>
+          <input type="text" id="ip" placeholder="Enter IP Address" />
+          <button id="ipButton" onClick="DisplayIp()"></button>
+        </div>
         <div id="search_container">
           <script async src="https://cse.google.com/cse.js?cx=01a82d2bd3fed46b7"></script>
           <div class="gcse-search"></div>
         </div>
-        <h1 class="time" id="time"></h1>
+
       </div>
-      <div id="middle">
-        <div id="weather-container">
-          <div id="weather">
-            <iframe src="https://giphy.com/embed/3y0oCOkdKKRi0"></iframe>
-          </div>
+      <h1 class="time" id="time"></h1>
+      <div id="ip_results"></div>
+    </div>
+    <div id="middle">
+      <div id="weather-container">
+        <div id="weather">
+          <iframe src="https://giphy.com/embed/3y0oCOkdKKRi0"></iframe>
         </div>
-        <div></div>
       </div>
-      <div id="bottom">
-        <p id="author"></p>
-      </div>
-    </main>
-    <script src="index.js"></script>
-  </body>
+      <div></div>
+    </div>
+    <div id="bottom">
+      <p id="author"></p>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+
 </html>
