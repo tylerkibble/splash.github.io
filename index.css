@@ -1,15 +1,17 @@
 * {
     box-sizing: border-box;
-    min-width: 0px;
-    min-height: 0px;
 
 }
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
+/* break the top elements into a list if the screen cant display the whole page */
 }
 body {
     max-width: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    min-height: 100%;
     margin: 0;
     background: no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -28,8 +30,9 @@ a {
   background-color: transparent;
 }
 main {
+    overflow-x: break-word;
     min-width: 0px;
-    padding: 15px;
+    padding: 2rem;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -37,11 +40,15 @@ main {
 }
 div.top {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    flex-shrink: 95%;
+    align-items: center;
+    justify-content: space-around;
     min-width: 0px;
     min-height: min-content;
-    gap: 50px;
+    line-break: start;
+    gap: 5rem;
+    overflow: scroll;
+    flex-flow: wrap;
 }
 #crypto-top {
     display: flex;
@@ -58,16 +65,20 @@ h1.time {
     font-size: 5rem;
     display: flex;
     justify-content: center;
+    line-break: end;
+    min-width: fit-content;
 }
 
 div#crypto {
-    font-size: 200%;
+    font-size: 140%;
     display: flex;
     gap: 5rem;
     overflow-x: scroll;
     align-items: center;
     justify-content: space-around;
-    min-width: 0px;
+    min-width: 50%;
+    flex-flow: wrap;
+    min-width: 100%s;
 }
 img {
     width: 25px;
@@ -76,14 +87,19 @@ img {
 }
 div.crypto-container {
     text-shadow: 0px 0px 20px #242424;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    overflow-x: scroll;
+    min-width: 0px;
 }
 
 div#weather {
     font-size: 200%;
     display: table;
+    border-radius: 20px;
+    padding: 1.5rem;
 }
 iframe {
     width: 100%;
@@ -93,6 +109,8 @@ iframe {
 #weather-container {
     display: flex;
     justify-content: right;
+    align-items: baseline;
+    overflow: scroll;
 }
 #weather_icon {
     width: 6rem;
@@ -111,7 +129,6 @@ iframe {
 div#weather:hover {
     background-color: #4747475a;
     border-radius: 5px;
-    animation: forwards;
 }
 /* div#weather_container:hover {
     background-color: #1e1e1ed9;
@@ -129,25 +146,26 @@ div#weather:hover .hide {
     bottom: 0;
     right: 0;
 }
-/* make the middle div not move when the other elements move */
 #middle {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    gap: 15px;
-    box-sizing: 0px;
+    min-width: fit-content;
 }
 #coin {
     gap: 15px;
-}
-#extended_weather {
-    z-index: 2;
 }
 #coin_img{
     height: 100px;
     width: 100px;
 }
+#extended_weather {
+    z-index: 2;
+    padding: auto;
+}
+
 #advanced_weather {
+    padding: auto;
     font-size: 35px;
 }
 #advanced_weather:hover {
@@ -155,7 +173,7 @@ div#weather:hover .hide {
     border-radius: 10px;
     border-color: #242424;
     background-size: auto;
-    padding: 2rem;
+    padding: auto;
 }
 #search_container {
     display: flex;
@@ -163,17 +181,47 @@ div#weather:hover .hide {
     justify-content: center;
     gap: 15px;
     max-width: 100%;
+    min-width: fit-content;
 }
-.gcse-search {
-    width: 50%;
-    height: 65%;
+#ipInfo {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    align-self: top;
+    gap: 15px;
+    flex-grow: 0.5;
 }
-.gsc-control-cse {
-    background-color: transparent;
+#ip {
+    font-size: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 100%;
+    min-width: fit-content;
+    border-radius: 7px;
+    border-color: transparent;
 }
-.gsc-control-cse .gsc-table-result {
-    background-color: transparent;
+#ipButton {
+    background-image: url(assets/ip_icon.jpg);
+    size: fit-content;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 45%;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
-#___gcse_0 {
-    background-color: transparent;
+#searches {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    gap: 15px;
+    max-width: 100%;
+    min-width: fit-content;
+    flex-flow: wrap;
 }
